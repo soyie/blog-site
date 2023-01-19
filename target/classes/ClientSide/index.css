@@ -1,0 +1,98 @@
+html{
+    padding: 0;
+    margin: 0;
+}
+#create-account{
+    display: none;
+}
+#login{
+    display: none;
+}
+
+#write-story{
+    display: none;
+}
+
+#Stories{
+    display: none;
+    padding: 23px 0 0 23px;
+}
+
+#rightpad{
+    flex: 1;
+    padding-left: 23px;
+}
+#write-story{
+    display: none;
+
+}
+
+#pic{
+    padding-top: 60px;
+    height: 80%;
+    width: 90%;
+}
+
+
+#leftpad{
+    flex: 1;
+}
+#menu{
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+}
+
+#home{
+    padding: 20% 0 0 15px;
+}
+
+#paddings{
+    display: flex;
+}
+
+
+body {
+    font-family: sans-serif;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+form {
+    width: 360px;
+    margin: 0 auto;
+    padding: 20px;
+    /* background-color: #fff; */
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0099ff;
+    color: #fff;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,347 @@
+<!-- <!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>StoryShare</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="header">
+        <h1>StoryShare</h1>
+        <div id="options">
+            <button onclick="createAccount()">Sign up</button>
+            <button onclick="login()">Sign In</button>
+            <button onclick="about()">About Us</button>
+            <button onclick="stories()">Start reading</button>
+        </div>
+    </div>
+    <input type="hidden" id="userID">
+    <div id="home">
+        
+    </div>
+    <div id="create-account">
+        <p>Become a writer in our best Platform </p><br>
+        <p for="username">Enter your First name</p>
+        <input type="text" id="name" name="username" placeholder="Name">
+        <p for="userSurname">Enter Surname</p>
+        <input type="text" id="surname" name="userSurname" placeholder="Surname">
+        <p for="email">Enter Email</p>
+        <input type="email" id="email"  name="email" placeholder="Email">
+        <p for="password1">Enter your Password</p>
+        <input type="password" id="password1" name="password1" placeholder="Password" pattern="(? = .*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        <p for="password2">Enter your Password again </p>
+        <input type="password" id="password2" name="password2" placeholder="Confirm Password"><br>
+        <button id="save" onclick="createPassword()">Save</button>
+
+    </div>
+    <div id="login">
+        <p>Welcome back Writer</p>
+        <p>Create Account</p>
+        <p for="email">Enter Email</p>
+        <input type="email" id="email"  name="email" placeholder="Email"><br>
+        <p for="password1">Enter your Password</p>
+        <input type="password" id="password1" name="password1" placeholder="Password" pattern="(? = .*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"><br>
+    </div>
+    <div id="write-story" >
+        <p id="test">A Platform where we can connect and write stories of our lives</p>
+    </div>
+    <div id="Stories">
+        
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StoryShare</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div id="header">
+        <h2>StoryShare</h2>
+        <div id="menu">
+            <a href="#" onclick="" style="padding-right: 12px;">About</a>
+            <a href="#" onclick="disappear()" style="padding-right: 12px;">Write a Story</a>
+            <a href="#" onclick="" style="padding-right: 12px;">Read Stories</a>
+            <a href="#" onclick="" style="padding-right: 12px;">Home</a>
+        </div>
+    </div>
+    <hr>
+    <div id="Stories">
+        <h3><i>The Man that woke up From dead</i></h3>
+        <h3><i>How I met your mother</i></h3>
+        <h3><i>Misteriou Aircraft</i></h3>
+        <h3><i>Are Dragons real</i></h3>
+        <h3><i>How to kill a Fly easily</i></h3>
+        <h3><i>Life at WeThinkCode_</i></h3>
+        <h3><i>Life of a developer</i></h3>
+    </div>
+    <div id="write-story">
+        <div id="leftpad">
+            <textarea id="story" name="w3review" rows="30" cols="90" placeholder="Please Tell me more"></textarea>
+        </div>
+        <div id="rightpad" width="60px">
+            <p>Genre</p>
+            <input type="text" placeholder="Genre" >
+            <p>Topic</p>
+            <input type="text" placeholder="Topic">
+            <br>
+            <button>Save Story</button>
+        </div>
+    </div>
+    <div id="paddings">
+        <div id="rightpad">
+            <div id="home">
+                <p>Best platform where we allow people to share their own stories and help
+                    today Generation to learn from experiences by others.<br> We have so many stories which can suit your Pesonality and your mood
+                </p>
+                <p>You can Create Account or Login to start sharing your side of the story</p>
+                <a href="#Create Account" onclick="createAccount()">Sign up</a> or <a href="#" onclick="login()">Sign in</a><br>
+                <p>You can also Read Blogs by Other Creative Writers on our platform without creating account please Click <a href="#" onclick="stories()">here</a> to see stories</p>
+            </div>
+        </div>
+
+        <div id="leftpad">
+            <div id="pic">
+            <img src="undraw_web_developer_re_h7ie.svg" width="100%" height="100%">
+            </div>
+            <div id="create-account">
+                <h1>Login</h1>
+                <form>
+                    <label for="username">Name:</label>
+                    <input type="text" id="username" v-model="username">
+
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" v-model="surname">
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" v-model="email">
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" v-model="password">
+
+                    <button type="submit" @click.prevent="login">Login</button>
+                </form>
+            </div>
+            <div id="login">
+                <h1>Sign in</h1>
+                <form>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" v-model="email">
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" v-model="password">
+
+                    <button type="submit" @click.prevent="login">Login</button>
+                </form>
+            </div>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WeShare</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pangolin">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <h1>WeShare</h1>
+    <div id="main"></div>
+
+    <script id="navigator" type="text/handlebars-template">
+        <h3>{{email}}</h3>
+        <nav>
+            <a id="expense" href="#/expenses">Expenses</a>
+            <a id="requestsSent" href="#/paymentrequests-sent">Payment Request Sent</a>
+            <a id="requestsReceived" href="#/paymentrequests-received">Payment Request Received</a>
+            <a id="logout" href="#/login">Logout {{email}}</a>
+        </nav>
+    </script>
+
+    <script id="login" type="text/handlebars-template">
+        <h1>Log In</h1>
+        <br/>
+        <form id="form">
+            <input name="email" id="email" type="text" required/>
+            <input name="submit" type="submit" value="Log In"/>
+        </form>
+        <div id="results"></div>
+    </script>
+
+    <script id="expenses" type="text/handlebars-template">
+        <div id="navigation"></div>
+        <h2>My Expenses</h2>
+        <a href="#/newexpense">Add a new expense</a>
+        <div id="results"></div>
+    </script>
+
+    <script id="expenses-present" type="text/handlebars-template">
+        <table>
+        <tr>
+            <th>When</th>
+            <th>What</th>
+            <th>Amount Spent</th>
+            <th>Payments Requested</th>
+            <th>Payments Received</th>
+            <th>Nett Expense</th>
+        </tr>
+        <tbody>
+        {{#each expenses}}
+        <tr>
+            <th>{{expense.when}}</th>
+            <th><a href="#/paymentrequest" id="what">{{expense.what}}</a></th>
+            <th>{{expense.amountSpent}}</th>
+            <th>{{expense.paymentsRequested}}</th>
+            <th>{{expense.paymentsReceived}}</th>
+            <th>{{expense.nettExpense}}</th>
+        </tr>
+        {{/each}}
+        </tbody>
+        </table>
+    </script>
+
+    <script id="expenses-absent" type="text/handlebars-template">
+        <p>You don't have any expenses</p>
+    </script>
+
+    <script id="newexpense" type="text/handlebars-template">
+        <div id="navigation"></div>
+        <br>
+        <form>
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description"  required autofocus >
+
+            <label for="date">Date(dd/mm/yyyy e.g. 21/10/2021)</label>
+            <input type="text" id="date" name="date" required>
+
+            <label for="amount">Amount(no cents allowed)</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <input type="submit" name = "Submit" value = "Submit">
+        </form>
+    </script>
+
+    <script id="paymentrequests-sent" type="text/handlebars-template">
+        <div id="navigation"></div>
+        <h2>People that owe me</h2>
+        <div id="results"></div>
+    </script>
+
+    <script id="paymentrequests-sent-present" type="text/handlebars-template">
+        <table>
+            <tr>
+                <th>Who</th>
+                <th>What</th>
+                <th>Due In (days)</th>
+                <th>How Much</th>
+            </tr>
+            <tbody>
+            {{#each requestsSent}}
+            <tr>
+                <th>{{requestSent.who}}</th>
+                <th>{{requestSent.what}}</th>
+                <th>{{requestSent.due}}</th>
+                <th>{{requestSent.amount}}</th>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </script>
+
+    <script id="paymentrequests-sent-absent" type="text/handlebars-template"
+    >
+        <p>Nobody owes you anything</p>
+    </script>
+
+
+    <script id="paymentrequests-received" type="text/handlebars-template">
+        <div id="navigation"></div>
+        <h2>People that you owe</h2>
+        <div id="results"></div>
+    </script>
+
+    <script id="paymentrequests-received-present" type="text/handlebars-template">
+        <table>
+            <tr>
+                <th>Who</th>
+                <th>What</th>
+                <th>Due In (days)</th>
+                <th>How Much</th>
+            </tr>
+            <tbody>
+            {{#each requestsReceived}}
+            <tr>
+                <th>{{requestReceived.who}}</th>
+                <th>{{requestReceived.what}}</th>
+                <th>{{requestReceived.due}}</th>
+                <th>{{requestReceived.amount}}</th>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </script>
+
+    <script id="paymentrequests-received-absent" type="text/handlebars-template">
+        <p>You don't owe anyone anything</p>
+    </script>
+
+
+
+    <script id="paymentrequests" type="text/handlebars-template">
+        <div id="navigation"></div>
+        <h2>Submit a payment request for the following expense</h2>
+        <div id="result">
+            <p colspan="6">Date</p><p>{{expenses.when}}</p>
+            <p colspan="6">Description</p><p>{{expenses.what}}</p>
+            <p colspan="6">Amount</p><p>{{expenses.amountSpent}}</p>
+        </div>
+    </script>
+
+    <script id="paymentrequest" type="text/handlebars-template">
+
+
+        <p>The email address of the person that should pay you</p>
+        <input type="email" id="personemail">
+        <p>The amount they shold pay (maximum ZAR {{}}.00!)</p>
+
+        <input type="number" max={{expenses.amountSpent}}>
+        <p>By when must this claim be settled (dd/mm/yyyy)</p>
+        <input type="text" id="settledate">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-router@1.2.8/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html> -->

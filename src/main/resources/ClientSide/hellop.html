@@ -1,0 +1,92 @@
+
+const app = new Vue({
+    el: '#create',
+    data: {
+      username: '',
+      surname: '',
+      email: '',
+      password: ''
+    },
+    methods: {
+      login() {
+        let request = new Request('http://localhost:8000/savePerson', {
+            method: 'POST', // Specify the request method
+            headers: {
+                'Content-Type': 'application/json' // Specify the content type
+            },
+            body: JSON.stringify({ // Specify the data to be sent in the request body
+                name: username,
+                surname: surname,
+                email: email,
+                password: password
+            })
+        });
+        fetch(request)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+      }
+      
+    }
+  });
+  
+  
+  const log = new Vue({
+    el: '#log',
+    data: {
+      email: '',
+      password: ''
+    },
+    methods: {
+      login() {
+        let request = new Request('http://localhost:8000/savePerson', {
+            method: 'POST', // Specify the request method
+            headers: {
+                'Content-Type': 'application/json' // Specify the content type
+            },
+            body: JSON.stringify({ // Specify the data to be sent in the request body
+                email: email,
+                password: password
+            })
+        });
+        fetch(request)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+      }
+  
+    }
+  });
+
+
+
+  <div id="create">
+    <h1>Login</h1>
+    <form>
+        <label for="username">Name:</label>
+        <input type="text" id="username" v-model="username">
+
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" v-model="surname">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password">
+
+        <button type="submit" @click.prevent="login">Login</button>
+    </form>
+</div>
+<div id="log">
+    <h1>Login</h1>
+    <form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" v-model="password">
+
+        <button type="submit" @click.prevent="login">Login</button>
+    </form>
+</div>

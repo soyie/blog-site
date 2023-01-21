@@ -33,6 +33,17 @@ html{
     width: 90%;
 }
 
+#rightpadTwo{
+    flex: 1;
+    padding-left: 23px;
+}
+
+#leftpadTwo{
+    flex: 5;
+    align-items: flex-start;
+    justify-content: flex-start;
+    right: 30%;
+}
 
 #leftpad{
     flex: 1;

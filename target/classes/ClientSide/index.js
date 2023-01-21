@@ -3,7 +3,7 @@ username = null
 surname = null
 email = null
 userId = null
-stories = []
+topics = []
 
 
 
@@ -206,19 +206,47 @@ const GetStory = new Vue({
           console.log(data.length)
           for (i=0; i<data.length; i++){
 
-            document.getElementById("Topic").innerHTML = data[i].topic;
-            document.getElementById("Writer").innerHTML = "Writer: "+ data[i].writer
-            document.getElementById("date-and-time").innerHTML = data[i].date +"<br>"+ data[i].time
-            document.getElementById("genre").innerHTML = data[i].genres
-            document.getElementById("storyline").innerHTML = data[i].story
-            document.getElementById("upv").innerHTML = data[i].upVotes
-            document.getElementById("dv").innerHTML = data[i].downVote
+            // document.getElementById("Topic").innerHTML = data[i].topic;
+            // document.getElementById("Writer").innerHTML = "Writer: "+ data[i].writer
+            // document.getElementById("date-and-time").innerHTML = data[i].date +"<br>"+ data[i].time
+            // document.getElementById("genre").innerHTML = data[i].genres
+            // document.getElementById("storyline").innerHTML = data[i].story
+            // document.getElementById("upv").innerHTML = data[i].upVotes
+            // document.getElementById("dv").innerHTML = data[i].downVote
             console.log(data[i])
-            ShowStoryPage()
+            topics.push({
+              id: i,
+              topic: data[i].topic,
+              writer: data[i].writer,
+              story: data[i].story,
+              date: data[i].date +" "+data[i].time,
+              genre: data[i].genres,
+            })
           }
-        })
+          document.createElement
+          ShowStoryPage()
+          console.log(topics)
+        
+        names = '';
+        topics.forEach(topics => {
+          names += `
+              <div id='Topics'>
+              <h5 class="topic"><a onclick="displaystory(${topics.id})">${topics.id+" "+topics.topic}</a></h5>
+              </div>`
+      })
+      document.getElementById("topics").innerHTML = names;
+    })
         .catch(error => console.error(error));
       }
     }
   });
 
+
+function displaystory(storyId){
+  document.getElementById("Topic").innerHTML = topics[storyId].topic;
+  document.getElementById("Writer").innerHTML = "By "+topics[storyId].writer;
+  document.getElementById("date-and-time").innerHTML = topics[storyId].date;
+  document.getElementById("genre").innerHTML = topics[storyId].genre;
+  document.getElementById("storyline").innerHTML = topics[storyId].story;
+
+}

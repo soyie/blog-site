@@ -147,11 +147,7 @@ public class Database {
                     Date = rs.getString("Date");
                     Time = rs.getString("Time");
                     Number_of_DownVotes = Integer.parseInt(rs.getString("Number_Of_DownVotes"));
-//                    System.out.println("story "+Story);
-//                    System.out.println("genre "+Genres);
                     stories.add(new Storyinfo(Topic, Genres, Story, Writer, Number_of_UpVotes, Number_of_DownVotes, Date, Time));
-                    System.out.println(new Storyinfo(Topic, Story, Genres, Writer, Number_of_UpVotes, Number_of_DownVotes, Date, Time));
-//                    System.out.println("T "+Topic+ " S "+Story+ " G "+Genres+ " W "+Writer+ " NU "+Number_of_UpVotes+ " ND "+Number_of_DownVotes+ " D "+Date+ " T "+Time);
                 }
 
             } catch (SQLException throwables) {

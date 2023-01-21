@@ -113,13 +113,10 @@ public class WebService
             write.setDate(LocalDate.now());
             write.setTime(LocalTime.now());
             write.SaveStory();
-            System.out.println("API genre "+data.split(":")[3].split(",")[0].strip().replace("\"",""));
-            System.out.println("API story "+data.split(":")[4].split(",")[0].strip().replace("\"","").replace("}", ""));
             ctx.json(database.gettingStories(data.split(":")[1].split(",")[0].strip().replace("\"",""), data.split(":")[2].split(",")[0].strip().replace("\"","")));
         });
 
         server.get("/Stories", ctx ->{
-            System.out.println(database.gettingAllStories());
             ctx.json(database.gettingAllStories());
         });
     }

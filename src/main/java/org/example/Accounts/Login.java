@@ -1,14 +1,17 @@
 package org.example.Accounts;
 
+import org.example.databases.Database;
+
+import java.sql.SQLException;
 import java.util.UUID;
 
 public class Login {
     private String Password;
-    private String Name;
+    private String Email;
 
 
-    public void setName(String name) {
-        Name = name;
+    public void setEmail(String email) {
+        Email = email;
     }
 
 
@@ -20,7 +23,9 @@ public class Login {
         Password = password;
     }
 
-//    public UUID LoggedUser(String username, String password){
-//        return user;
-//    }
+    public boolean logIn(){
+        Database data = new Database();
+        data.gettingAccount(Email, Password);
+        return true;
+    }
 }

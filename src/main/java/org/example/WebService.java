@@ -2,16 +2,21 @@ package org.example;
 
 import com.google.common.annotations.VisibleForTesting;
 import io.javalin.Javalin;
+import io.javalin.apibuilder.ApiBuilder;
 import io.javalin.apibuilder.EndpointGroup;
 import io.javalin.http.Context;
 import io.javalin.http.staticfiles.Location;
 import org.example.Accounts.CreateAccount;
+import org.example.Accounts.Login;
 import org.example.Accounts.userInfo;
 import org.example.databases.Database;
+import org.example.structuring.blogStructure;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -30,12 +35,12 @@ public class WebService
     public static final int DEFAULT_PORT = 8000;
     private static final Map<String, String> users = new HashMap<>();
     CreateAccount create = new CreateAccount();
+    blogStructure write = new blogStructure();
+    Login login = new Login();
     static Database database = new Database();
     userInfo user = new userInfo();
 
     private static String PAGES_DIR = "/ClientSide";
-
-//    private static final String CREATE_CONTENT = ";
 
     public static void main( String[] args ) throws SQLException {
         database.createConnection();
@@ -78,25 +83,44 @@ public class WebService
         server = Javalin.create(config -> {
             config.http.defaultContentType = "application/json";
             config.staticFiles.add(PAGES_DIR, Location.CLASSPATH);
-//            config.staticFiles.add(CREATE_CONTENT, Location.CLASSPATH);
-        });
-
-        server.get("/writer{username}", context -> {
-            context.json(toJsonObject("userID", String.valueOf(user.getUserId())));
         });
 
         server.post("/savePerson", ctx ->{
                 String data = ctx.body();
-                System.out.println("point 2 "+data);
-                System.out.println(data.split(",")[1].split(":")[1].replace("\"", ""));
-//                create.setName(data.split(",")[0].split(":")[1].replace("\"", ""));
-//                create.setEmail(data.split(",")[2].split(":")[1].replace("\"", ""));
-//                create.setSurname(data.split(",")[1].split(":")[1].replace("\"", ""));
-//                create.setPassword(data.split(",")[3].split(":")[1].replace("\"}", ""));
-//                create.setUserId(UUID.randomUUID());
-//                create.CreateAccount();
-//                database.gettingAccount(data.split(",")[0].split(":")[1].replace("\"", ""), data.split(",")[3].split(":")[1].replace("\"}", ""));
-//                ctx.redirect("/response");
+                create.setName(data.split(":")[2].split(",")[0].strip().replace("\"", ""));
+                create.setSurname(data.split(":")[5].split(",")[0].strip().replace("\"", ""));
+                create.setEmail(data.split(":")[8].split(",")[0].strip().replace("\"", ""));
+                create.setPassword(data.split(":")[11].split(",")[0].strip().replace("\"", ""));
+                create.setUserId(UUID.randomUUID());
+                create.CreateAccount();
+                database.gettingAccount(data.split(",")[0].split(":")[1].replace("\"", ""), data.split(",")[3].split(":")[1].replace("\"}", ""));
+                ctx.json(database.gettingAccount(data.split(":")[8].split(",")[0].strip().replace("\"", ""), data.split(":")[11].split(",")[0].strip().replace("\"", "")));
+        });
+
+        server.post("/logIn", ctx ->{
+                String data = ctx.body();
+                login.setEmail(data.split(":")[2].split(",")[0].strip().replace("\"", ""));
+                login.setPassword(data.split(":")[5].split(",")[0].strip().replace("\"", ""));
+                ctx.json(database.gettingAccount(data.split(":")[2].split(",")[0].strip().replace("\"", ""), data.split(":")[5].split(",")[0].strip().replace("\"", "")));
+        });
+
+        server.post( "/postStory", ctx ->{
+            String data = ctx.body();
+            write.setWriter(data.split(":")[1].split(",")[0].strip().replace("\"",""));
+            write.setTopic(data.split(":")[2].split(",")[0].strip().replace("\"",""));
+            write.setGenres(data.split(":")[3].split(",")[0].strip().replace("\"",""));
+            write.setStory(data.split(":")[4].split(",")[0].strip().replace("\"","").replace("}", ""));
+            write.setDate(LocalDate.now());
+            write.setTime(LocalTime.now());
+            write.SaveStory();
+            System.out.println("API genre "+data.split(":")[3].split(",")[0].strip().replace("\"",""));
+            System.out.println("API story "+data.split(":")[4].split(",")[0].strip().replace("\"","").replace("}", ""));
+            ctx.json(database.gettingStories(data.split(":")[1].split(",")[0].strip().replace("\"",""), data.split(":")[2].split(",")[0].strip().replace("\"","")));
+        });
+
+        server.get("/Stories", ctx ->{
+            System.out.println(database.gettingAllStories());
+            ctx.json(database.gettingAllStories());
         });
     }
 
@@ -106,29 +130,6 @@ public class WebService
         obj.put(key, value);
         String stages = obj.toString();
         return stages;
-
-//    private Javalin configureHttpServer(){
-//        stageServer = new StageService().initialise();
-//        stageServer.start();
-//
-//        placesServer = new PlaceNameService().initialise();
-//        placesServer.start();
-//
-//        scheduleServer = new ScheduleService().initialise();
-//        scheduleServer.start();
-//        return null;
-//
-//    }
-    //    public JSONArray location(String town, String province){
-//        HttpResponse<JsonNode> response = Unirest.get(PLACES_SVC_URL+town+'/'+province).asJson();
-//
-////        assertEquals( HttpStatus.OK, response.getStatus() );
-////        assertEquals( "application/json", response.getHeaders().getFirst( "Content-Type" ) );
-////            JSONArray jsonArray = ;
-//        System.out.println(response.getBody().getArray());
-//        return response.getBody().getArray();
-//    }
-
 
 }
 }

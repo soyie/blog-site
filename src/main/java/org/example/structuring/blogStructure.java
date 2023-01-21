@@ -1,17 +1,34 @@
 package org.example.structuring;
 
+import org.example.databases.Database;
+
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class blogStructure {
     private String Writer;
+    private String Genres;
     private String Topic;
     private LocalDate Date;
     private LocalTime Time;
+    private String Story;
     private int UpVotes;
     private int DownVotes;
 
+    public String getStory() {
+        return Story;
+    }
+    public void setStory(String story) {
+        Story = story;
+    }
+    public String getGenres() {
+        return Genres;
+    }
 
+    public void setGenres(String genres) {
+        Genres = genres;
+    }
 
     public int getUpVotes() {
         return UpVotes;
@@ -61,5 +78,8 @@ public class blogStructure {
         Time = time;
     }
 
-
+    public void SaveStory() throws SQLException {
+        Database save = new Database();
+        save.WriteStory(getTopic(), getStory(), getGenres(), getWriter(), getUpVotes(), getDownVotes(), getDate(), getTime(), null);
+    }
 }
